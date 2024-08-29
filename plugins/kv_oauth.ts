@@ -3,7 +3,12 @@ import type { Plugin } from "$fresh/server.ts";
 
 const oauthConfig = createGoogleOAuthConfig({
   redirectUri: "http://localhost:8000/callback",
-  scope: "https://www.googleapis.com/auth/userinfo.profile",
+  scope: [
+    "https://www.googleapis.com/auth/userinfo.profile",
+    "https://www.googleapis.com/auth/drive.appdata",
+    "https://www.googleapis.com/auth/drive.appfolder",
+    "https://www.googleapis.com/auth/drive.file",
+  ],
 });
 
 const { signIn, handleCallback, signOut, getSessionId } = createHelpers(
